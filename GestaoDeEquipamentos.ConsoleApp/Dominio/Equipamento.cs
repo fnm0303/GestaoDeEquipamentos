@@ -2,6 +2,13 @@ using System;
 
 namespace GestaoDeEquipamentos.ConsoleApp.Dominio;
 
+/*
+• Deve ter identificador único (id)
+• Deve ter um nome com no mínimo 6 caracteres;
+• Deve ter um preço de aquisição;
+• Deve ter uma fabricante;
+• Deve ter uma data de fabricação;
+*/
 public class Equipamento
 {
 
