@@ -1,4 +1,5 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.Dominio;
+﻿using System.Reflection.Metadata;
+using GestaoDeEquipamentos.ConsoleApp.Dominio;
 
 int contadorIds = 1;
 
@@ -51,7 +52,7 @@ while (true)
         {
             if (equipamentosSalvos[i] == null)
             {
-                equipamentosSalvos[i] = equipamento;
+                equipamentosSalvos[i] = equipamento; //guardando valores no array
                 break;
             }
         }
@@ -66,5 +67,29 @@ while (true)
     }
     else if (opcaoMenu == "4")
     {
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Visualização de Equipamentos");
+        Console.WriteLine("---------------------------------");
+
+        //Tabela do console
+        Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
+            "Id", "Nome", "Preço de Aquisição", "Data de Fabricação"
+            ); //definindo ordem da coluna e tamanho
+
+        for (int i = 0; i < equipamentosSalvos.Length; i++)
+        {
+            Equipamento eq = equipamentosSalvos[i]; //extraindo valores do array
+            if (eq == null)
+                continue;
+
+            Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
+            eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+            ); //definindo ordem da coluna e tamanho
+        }
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Digite Enter para continuar...");
+        Console.ReadLine();
     }
 }
