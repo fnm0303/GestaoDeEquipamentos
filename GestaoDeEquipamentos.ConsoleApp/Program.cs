@@ -153,7 +153,7 @@ while (true)
             }
         }
 
-        Console.WriteLine($"O equipamento {equipamentosSalvos[idSelecionado].nome} foi excluído com sucesso.");
+        Console.WriteLine($"O equipamento foi excluído com sucesso.");
         Console.ReadLine();
     }
 
