@@ -116,7 +116,47 @@ while (true)
     }
     else if (opcaoMenu == "3")
     {
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Exclusão de Equipamentos");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine(
+           "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
+           "Id", "Nome", "Preço de Aquisição", "Data de Fabricação"
+           ); //definindo ordem da coluna e tamanho
+
+        for (int i = 0; i < equipamentosSalvos.Length; i++)
+        {
+            Equipamento eq = equipamentosSalvos[i]; //extraindo valores do array
+            if (eq == null)
+                continue;
+
+            Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
+            eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+            );
+        }
+
+        Console.WriteLine("---------------------------------");
+        Console.Write("Digite o Id que deseja excluir: ");
+        int idSelecionado = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0; i < equipamentosSalvos.Length; i++)
+        {
+            Equipamento equipamentoSelecionado = equipamentosSalvos[i];
+            if (equipamentoSelecionado == null)
+                continue;
+
+            if (equipamentoSelecionado.id == idSelecionado)
+            {
+                equipamentosSalvos[i] = null;
+                break;
+            }
+        }
+
+        Console.WriteLine($"O equipamento {equipamentosSalvos[idSelecionado].nome} foi excluído com sucesso.");
+        Console.ReadLine();
     }
+
     else if (opcaoMenu == "4")
     {
         Console.WriteLine("---------------------------------");
