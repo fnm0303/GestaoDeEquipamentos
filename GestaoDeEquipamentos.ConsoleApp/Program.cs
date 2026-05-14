@@ -305,6 +305,42 @@ while (true)
                 Console.WriteLine($"O chamado {novoChamado.titulo} foi cadastrado com sucesso.");
                 Console.ReadLine();
             }
+
+            else if (opcaoMenu == "4")
+            {
+                Console.WriteLine("---------------------------------");
+                Console.WriteLine("Visualização de Chamados");
+                Console.WriteLine("---------------------------------");
+
+                Console.WriteLine(
+                    "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                    "Id",
+                    "Título",
+                    "Descrição",
+                    "Data de abertura",
+                    "Equipamento"
+                    );
+
+                for (int i = 0; i < chamadosSalvos.Length; i++)
+                {
+                    Chamado ch = chamadosSalvos[i];
+                    if (ch == null)
+                        continue;
+
+                    Console.WriteLine(
+                   "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                   ch.id,
+                   ch.titulo,
+                   ch.descricao,
+                   ch.dataAbertura.ToShortDateString(),
+                   ch.equipamento.nome
+                   );
+                }
+
+                Console.WriteLine("---------------------------");
+                Console.WriteLine("Digite ENTER para continuar...");
+                Console.ReadLine();
+            }
         }
     }
 }
