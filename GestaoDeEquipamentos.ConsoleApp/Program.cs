@@ -366,7 +366,54 @@ while (true)
 
             else if (opcaoMenu == "3")
             {
+                Console.WriteLine("---------------------------------");
+                Console.WriteLine("Exclusão de Chamados");
+                Console.WriteLine("---------------------------------");
 
+                Console.WriteLine(
+                    "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                    "Id",
+                    "Título",
+                    "Descrição",
+                    "Data de abertura",
+                    "Equipamento"
+                    );
+
+                for (int i = 0; i < chamadosSalvos.Length; i++)
+                {
+                    Chamado ch = chamadosSalvos[i];
+                    if (ch == null)
+                        continue;
+
+                    Console.WriteLine(
+                   "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                   ch.id,
+                   ch.titulo,
+                   ch.descricao,
+                   ch.dataAbertura.ToShortDateString(),
+                   ch.equipamento.nome
+                   );
+                }
+
+                Console.Write("Digite o ID do chamado que deseja excluir: ");
+                int idChamadoSelecionado = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i < chamadosSalvos.Length; i++)
+                {
+                    Chamado chamadoSelecionado = chamadosSalvos[i];
+
+                    if (chamadoSelecionado == null)
+                        continue;
+
+                    if (chamadoSelecionado.id == idChamadoSelecionado)
+                    {
+                        chamadosSalvos[i] = null;
+                        break;
+                    }
+                }
+
+                Console.WriteLine($"O chamado foi excluído com sucesso.");
+                Console.ReadLine();
             }
 
             else if (opcaoMenu == "4")
