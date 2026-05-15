@@ -264,7 +264,7 @@ while (true)
 
                     Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
                     ); //definindo ordem da coluna e tamanho
                 }
                 Console.WriteLine("---------------------------------");
