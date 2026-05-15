@@ -100,7 +100,7 @@ while (true)
 
                     Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
                     ); //definindo ordem da coluna e tamanho
                 }
 
@@ -155,7 +155,7 @@ while (true)
 
                     Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
                     );
                 }
 
@@ -200,7 +200,7 @@ while (true)
 
                     Console.WriteLine(
                     "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao
+                    eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
                     ); //definindo ordem da coluna e tamanho
                 }
                 Console.WriteLine("---------------------------------");
@@ -306,14 +306,14 @@ while (true)
                 Console.ReadLine();
             }
 
-            else if (opcaoMenu == "4")
+            else if (opcaoMenu == "2")
             {
                 Console.WriteLine("---------------------------------");
-                Console.WriteLine("Visualização de Chamados");
+                Console.WriteLine("Edição de Chamados");
                 Console.WriteLine("---------------------------------");
 
                 Console.WriteLine(
-                    "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                    "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
                     "Id",
                     "Título",
                     "Descrição",
@@ -328,7 +328,70 @@ while (true)
                         continue;
 
                     Console.WriteLine(
-                   "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                   "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                   ch.id,
+                   ch.titulo,
+                   ch.descricao,
+                   ch.dataAbertura.ToShortDateString(),
+                   ch.equipamento.nome
+                   );
+                }
+
+                Console.Write("Digite o ID do chamado que deseja editar: ");
+                int idChamadoSelecionado = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("\nDigite o título do chamado: ");
+                string titulo = Console.ReadLine();
+
+                Console.Write("\nDigite a descrição do chamado: ");
+                string descricao = Console.ReadLine();
+
+                for (int i = 0; i < chamadosSalvos.Length; i++)
+                {
+                    Chamado chamadoSelecionado = chamadosSalvos[i];
+
+                    if (chamadoSelecionado == null)
+                        continue;
+
+                    if (chamadoSelecionado.id == idChamadoSelecionado)
+                    {
+                        chamadoSelecionado.titulo = titulo;
+                        chamadoSelecionado.descricao = descricao;
+                        break;
+                    }
+                }
+                Console.WriteLine($"O chamado {titulo} foi salvo com sucesso.");
+                Console.ReadLine();
+            }
+
+            else if (opcaoMenu == "3")
+            {
+
+            }
+
+            else if (opcaoMenu == "4")
+            {
+                Console.WriteLine("---------------------------------");
+                Console.WriteLine("Visualização de Chamados");
+                Console.WriteLine("---------------------------------");
+
+                Console.WriteLine(
+                    "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
+                    "Id",
+                    "Título",
+                    "Descrição",
+                    "Data de abertura",
+                    "Equipamento"
+                    );
+
+                for (int i = 0; i < chamadosSalvos.Length; i++)
+                {
+                    Chamado ch = chamadosSalvos[i];
+                    if (ch == null)
+                        continue;
+
+                    Console.WriteLine(
+                   "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
                    ch.id,
                    ch.titulo,
                    ch.descricao,
