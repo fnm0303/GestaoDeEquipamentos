@@ -346,6 +346,15 @@ while (true)
                 Console.Write("\nDigite a descrição do chamado: ");
                 string descricao = Console.ReadLine();
 
+                Console.Write("Digite o nome do equipamento: ");
+                string nome = Console.ReadLine();
+
+                Console.Write("\nDigite o preço de aquisição do equipamento: ");
+                decimal precoAquisicao = Convert.ToDecimal(Console.ReadLine());
+
+                Console.Write("\nDigite a data de fabricação do equipamento: ");
+                DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
+
                 for (int i = 0; i < chamadosSalvos.Length; i++)
                 {
                     Chamado chamadoSelecionado = chamadosSalvos[i];
@@ -357,6 +366,9 @@ while (true)
                     {
                         chamadoSelecionado.titulo = titulo;
                         chamadoSelecionado.descricao = descricao;
+                        chamadoSelecionado.equipamento.nome = nome;
+                        chamadoSelecionado.equipamento.precoAquisicao = precoAquisicao;
+                        chamadoSelecionado.equipamento.dataFabricacao = dataFabricacao;
                         break;
                     }
                 }
