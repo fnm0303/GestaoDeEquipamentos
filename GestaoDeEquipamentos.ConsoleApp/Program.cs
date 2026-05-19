@@ -1,12 +1,17 @@
 ﻿using System.Reflection.Metadata;
 using GestaoDeEquipamentos.ConsoleApp.Apresentacao;
 using GestaoDeEquipamentos.ConsoleApp.Dominio;
+using GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 int contadorIdsChamados = 1;
 Chamado[] chamadosSalvos = new Chamado[100];
 
+RepositorioEquipamento repositorioEquipamento = new RepositorioEquipamento();
+
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 TelaEquipamento telaEquipamento = new TelaEquipamento();
+
+telaEquipamento.repositorioEquipamento = repositorioEquipamento;
 
 while (true)
 {
