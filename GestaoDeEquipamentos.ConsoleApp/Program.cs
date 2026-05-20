@@ -1,16 +1,18 @@
 ﻿using System.Reflection.Metadata;
 using GestaoDeEquipamentos.ConsoleApp.Apresentacao;
-using GestaoDeEquipamentos.ConsoleApp.Dominio;
 using GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 RepositorioEquipamento repositorioEquipamento = new RepositorioEquipamento();
+RepositorioChamado repositorioChamado = new RepositorioChamado();
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 TelaEquipamento telaEquipamento = new TelaEquipamento();
 
 telaEquipamento.repositorioEquipamento = repositorioEquipamento;
 
-TelaChamado telaChamado = new TelaChamado();
+TelaChamado telaChamado = new TelaChamado(); //instanciando classe que não é static
+telaChamado.repositorioChamado = repositorioChamado;
+telaChamado.repositorioEquipamento = repositorioEquipamento;
 
 while (true)
 {
@@ -62,24 +64,16 @@ while (true)
             }
 
             if (opcaoMenu == "1")
-            {
-
-            }
+                telaChamado.Cadastrar();
 
             else if (opcaoMenu == "2")
-            {
-
-            }
+                telaChamado.Editar();
 
             else if (opcaoMenu == "3")
-            {
-
-            }
+                telaChamado.Excluir();
 
             else if (opcaoMenu == "4")
-            {
-
-            }
+                telaChamado.Visualizar();
         }
     }
 }

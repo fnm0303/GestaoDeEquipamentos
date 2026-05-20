@@ -5,6 +5,7 @@ namespace GestaoDeEquipamentos.ConsoleApp.Apresentacao;
 
 public class TelaChamado
 {
+    public RepositorioChamado repositorioChamado;
     public RepositorioEquipamento repositorioEquipamento;
     public string? ObterMenuChamado()
     {
@@ -80,20 +81,14 @@ public class TelaChamado
 
         }
         Chamado novoChamado = new Chamado();
-        novoChamado.id = contadorIdsChamados++;
+
         novoChamado.titulo = titulo;
         novoChamado.descricao = descricao;
         novoChamado.dataAbertura = dataAbertura;
         novoChamado.equipamento = equipamentoSelecionado;
 
-        for (int i = 0; i < chamadosSalvos.Length; i++)
-        {
-            if (chamadosSalvos[i] == null)
-            {
-                chamadosSalvos[i] = novoChamado;
-                break;
-            }
-        }
+        repositorioChamado.Cadastrar(novoChamado);
+
         Console.WriteLine($"O chamado {novoChamado.titulo} foi cadastrado com sucesso.");
         Console.ReadLine();
     }
@@ -104,7 +99,7 @@ public class TelaChamado
         Console.WriteLine("Edição de Chamado");
         Console.WriteLine("---------------------------------");
 
-        Equipamento[] equipamentosSalvos = repositorioEquipamento.SelecionarTodos();
+        Chamado[] chamadosSalvos = repositorioChamado.SelecionarTodos();
         // Tabela
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -30} | {3, -17} | {4, -15}",
@@ -140,6 +135,8 @@ public class TelaChamado
 
         // Apresentar os equipamentos cadastrados
         Console.WriteLine("---------------------------------");
+
+        Equipamento[] equipamentosSalvos = repositorioEquipamento.SelecionarTodos();
 
         // tabela do console
         Console.WriteLine(
@@ -182,21 +179,13 @@ public class TelaChamado
             }
         }
 
-        for (int i = 0; i < chamadosSalvos.Length; i++)
-        {
-            Chamado chamadoSelecionado = chamadosSalvos[i];
+        Chamado chamadoAtualizado = new Chamado();
 
-            if (chamadoSelecionado == null)
-                continue;
+        chamadoAtualizado.titulo = titulo;
+        chamadoAtualizado.descricao = descricao;
+        chamadoAtualizado.equipamento = equipamentoSelecionado;
 
-            if (chamadoSelecionado.id == idSelecionado)
-            {
-                chamadoSelecionado.titulo = titulo;
-                chamadoSelecionado.descricao = descricao;
-                chamadoSelecionado.equipamento = equipamentoSelecionado;
-                break;
-            }
-        }
+        repositorioChamado.Editar(idSelecionado, chamadoAtualizado);
 
         Console.WriteLine($"O chamado {titulo} foi editado com sucesso!");
         Console.ReadLine();
@@ -207,6 +196,8 @@ public class TelaChamado
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Exclusão de Chamados");
         Console.WriteLine("---------------------------------");
+
+        Chamado[] chamadosSalvos = repositorioChamado.SelecionarTodos();
 
         Console.WriteLine(
             "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
@@ -236,19 +227,7 @@ public class TelaChamado
         Console.Write("Digite o ID do chamado que deseja excluir: ");
         int idChamadoSelecionado = Convert.ToInt32(Console.ReadLine());
 
-        for (int i = 0; i < chamadosSalvos.Length; i++)
-        {
-            Chamado chamadoSelecionado = chamadosSalvos[i];
-
-            if (chamadoSelecionado == null)
-                continue;
-
-            if (chamadoSelecionado.id == idChamadoSelecionado)
-            {
-                chamadosSalvos[i] = null;
-                break;
-            }
-        }
+        repositorioChamado.Excluir(idChamadoSelecionado);
 
         Console.WriteLine($"O chamado foi excluído com sucesso.");
         Console.ReadLine();
@@ -259,6 +238,8 @@ public class TelaChamado
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Visualização de Chamados");
         Console.WriteLine("---------------------------------");
+
+        Chamado[] chamadosSalvos = repositorioChamado.SelecionarTodos();
 
         Console.WriteLine(
             "{0, -7} | {1, -17} | {2, -40} | {3, -17} | {4, -15}", //negativos para alinhar a esquerda
