@@ -43,7 +43,7 @@ public class TelaEquipamento
 
         repositorioEquipamento.Cadastrar(equipamento);
 
-        Console.WriteLine($"O equipamento {equipamento.nome} foi salvo com sucesso.");
+        Console.WriteLine($"O equipamento {equipamento.Nome} foi salvo com sucesso.");
         Console.ReadLine();
     }
 
@@ -68,7 +68,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-            eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, "R$ " + eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             ); //definindo ordem da coluna e tamanho
         }
 
@@ -114,7 +114,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-            eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, "R$ " + eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             );
         }
 
@@ -150,7 +150,7 @@ public class TelaEquipamento
 
             Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -20} | {3, -15}", //negativos para alinhar a esquerda
-            eq.id, eq.nome, "R$ " + eq.precoAquisicao, eq.dataFabricacao.ToShortDateString()
+            eq.Id, eq.Nome, "R$ " + eq.PrecoAquisicao, eq.DataFabricacao.ToShortDateString()
             ); //definindo ordem da coluna e tamanho
         }
         Console.WriteLine("---------------------------------");
