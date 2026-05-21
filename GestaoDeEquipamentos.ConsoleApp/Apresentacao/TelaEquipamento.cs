@@ -39,11 +39,7 @@ public class TelaEquipamento
         Console.Write("\nDigite a data de fabricação do equipamento: ");
         DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
-        Equipamento equipamento = new Equipamento();
-
-        equipamento.nome = nome;
-        equipamento.precoAquisicao = precoAquisicao;
-        equipamento.dataFabricacao = dataFabricacao;
+        Equipamento equipamento = new Equipamento(nome, precoAquisicao, dataFabricacao);
 
         repositorioEquipamento.Cadastrar(equipamento);
 
@@ -89,10 +85,7 @@ public class TelaEquipamento
         Console.Write("\nDigite a data de fabricação do equipamento: ");
         DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
-        Equipamento equipamentoAtualizado = new Equipamento();
-        equipamentoAtualizado.nome = nome;
-        equipamentoAtualizado.precoAquisicao = precoAquisicao;
-        equipamentoAtualizado.dataFabricacao = dataFabricacao;
+        Equipamento equipamentoAtualizado = new Equipamento(nome, precoAquisicao, dataFabricacao);
 
         repositorioEquipamento.Editar(idSelecionado, equipamentoAtualizado);
 
